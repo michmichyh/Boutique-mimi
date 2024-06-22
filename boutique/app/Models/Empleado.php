@@ -9,8 +9,16 @@ class Empleado extends Model
 {
     use HasFactory;
 
-    protected $fillable = ['nombre', 'email', 'telefono'];
+    protected $table = 'empleados'; 
 
+    protected $fillable = [
+        'nombre',
+        'telefono',
+        'email',
+        'descrpcion',
+    ];
+
+   
     public function agendamientos()
     {
         return $this->hasMany(Agendamiento::class);
