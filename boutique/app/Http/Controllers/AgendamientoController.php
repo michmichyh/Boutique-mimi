@@ -65,34 +65,4 @@ class AgendamientoController extends Controller
 
         return response()->json($data, 201);
     }
-    public function destroy($id)
-{
-    try {
-        // Verificar que se está recibiendo el ID correctamente
-        dd($id); // O var_dump($id);
-
-        // Intentar encontrar el agendamiento por su ID
-        $agendamiento = Agendamiento::findOrFail($id);
-
-        // Eliminar el agendamiento
-        $agendamiento->delete();
-
-        // Preparar la respuesta con el mensaje de eliminación y el estado HTTP
-        $data = [
-            'message' => 'Agendamiento eliminado',
-            'status' => 200
-        ];
-
-        // Retornar la respuesta en formato JSON
-        return response()->json($data, 200);
-    } catch (\Exception $e) {
-        // Si hay un error, retornar el error 404
-        $data = [
-            'message' => 'Agendamiento no encontrado',
-            'status' => 404,
-            'error' => $e->getMessage() // Agregar esto para ver el mensaje de error real
-        ];
-        return response()->json($data, 404);
-    }
-}
     };

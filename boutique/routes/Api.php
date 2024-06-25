@@ -4,21 +4,14 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AgendamientoController;
 use App\Http\Controllers\EmpleadoController;
+use App\Http\Controllers\ClienteController;
 
-///Route::get('/Clientes', function () {
-    ///return 'clientes';
-///});
+//Route::get('/Cliente', [ClienteController::class , 'index'] );
 
+//Route::post('/Cliente', [ClienteController::class , 'store'] );
 
-///Route::post('/Clientes', function () {
-    ///return 'clientes';
-///});
+Route::get('/Agendamiento', [AgendamientoController::class , 'index'] );
 
-
-Route::get('/Agendamientos', [AgendamientoController::class , 'index'] );
-
-Route::post('/Agendamientos', [AgendamientoController::class, 'store']);
-
-Route::delete('/agendamientos/{id}', [AgendamientoController::class, 'destroy']);
+Route::post('/Agendamiento', [AgendamientoController::class, 'store']);
  
 Route::get('/Empleados', [EmpleadoController::class , 'index']);
