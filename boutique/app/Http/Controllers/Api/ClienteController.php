@@ -10,6 +10,36 @@ use Illuminate\Support\Facades\Validator;
 
 class ClienteController extends Controller
 {
+    public function login(Request $request)
+    {
+        $validator = Validator::make($request->all(), [
+            'email' => 'required|email',
+            'password' => 'required|max:15',
+        ]);
+
+        if ($validator->fails()) {
+            return response()->json([
+                'message' => 'Error en validación de los datos',
+                'errors' => $validator->errors(),
+                'status' => 400
+            ], 400);
+        }
+
+        $clientes = Cliente::where('email', $request->email)->first();
+
+        if (!$clientes || !Hash::check($request->password, $clientes->password)) {
+            return response()->json([
+                'message' => 'Credenciales incorrectas. Por favor, verifica tu email y contraseña.',
+                'status' => 401
+            ], 401);
+        }
+
+        return response()->json([
+            'message' => 'Login exitoso',
+            'Cliente' => $clientes,
+            'status' => 200
+        ], 200);
+    }
     public function index() 
     { 
         $clientes = Cliente::all();
