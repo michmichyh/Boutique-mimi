@@ -12,10 +12,10 @@ class EmpleadoFactory extends Factory
     public function definition()
     {
         return [
-            // Define aquí los campos y valores que deseas generar para pruebas
             'nombre' => $this->faker->name,
+            'telefono' => $this->faker->phoneNumber,
             'email' => $this->faker->unique()->safeEmail,
-            // Otros campos necesarios
+            'descripcion' => $this->faker->sentence,
         ];
     }
 }

@@ -4,6 +4,7 @@ namespace Database\Factories;
 
 use App\Models\Cliente;
 use Illuminate\Database\Eloquent\Factories\Factory;
+use Illuminate\Support\Facades\Hash;
 
 class ClienteFactory extends Factory
 {
@@ -12,10 +13,11 @@ class ClienteFactory extends Factory
     public function definition()
     {
         return [
-            // Define aquí los campos y valores que deseas generar para pruebas
             'nombre' => $this->faker->name,
+            'telefono' => $this->faker->phoneNumber,
             'email' => $this->faker->unique()->safeEmail,
-            // Otros campos necesarios
+            'direccion' => $this->faker->address,
+            'password' => Hash::make('password123'), // Generar una contraseña encriptada
         ];
     }
 }
